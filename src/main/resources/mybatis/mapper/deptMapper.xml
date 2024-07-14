@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.DeptDao"> 
+	
+	<select id="deptAll" resultType="com.spring.dto.Dept">
+		select * from dept order by deptno
+	</select>
+	<select id="deptOne"  parameterType="int" resultType="com.spring.dto.Dept">
+		select * from dept where deptno = #{deptno}
+	</select>
+	<select id="deptCount" resultType="int">
+		select count(*) form dept
+	</select>
+	<insert id="insertDept" parameterType="com.spring.dto.Dept">
+		insert into dept values(#{deptno}, #{dname}, #{loc})
+	</insert>
+	<select id="getdeptno"  resultType="int">
+		select max(deptno) from dept 
+	</select>
+	
+</mapper> 

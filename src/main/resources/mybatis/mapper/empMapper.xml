@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.dao.EmpDao"> 
+  	<select id="searchEmp" resultType="com.spring.dto.Emp" parameterType="com.spring.dto.Emp">
+  	select * from emp 
+  	<where>	
+  		<if test="job !=''">
+  			job = #{job}
+  		</if>
+  		<if test="ename !=''"> 
+  			And  ename LIKE concat('%',#{ename},'%')
+  		</if>
+  	</where>
+  	</select>
+  <select id="getdeptnoAll" resultType="int">
+  	select distinct deptno from emp
+  </select>
+  	<select id="getEname" resultType="string" parameterType="int">
+  		select ENAME from emp where DEPTNO = #{deptno}
+  	</select>
+  	<select id="getEmp" resultType="com.spring.dto.Emp" parameterType="string">
+  		select * from emp where ename LIKE #{ename}
+  	</select>
+  </mapper> 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.FileinfoDao">
+	<insert id="insertFile" parameterType="com.spring.dto.FileinfoDto"
+	useGeneratedKeys="true" keyProperty="fileid">
+		insert into fileinfo (name, path, filesize, description ) values
+		(#{name}, #{path}, #{filesize},#{description})
+	</insert>
+	<select id="fileList" resultType="com.spring.dto.FileinfoDto">
+		select * from fileinfo
+	</select>
+	<select id="fileOne" parameterType="int" resultType="com.spring.dto.FileinfoDto">
+		select * from fileinfo where fileid = #{fileid}
+	</select>
+	
+	
+</mapper>
